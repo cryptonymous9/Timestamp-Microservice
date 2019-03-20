@@ -9,7 +9,9 @@ var app = express();
 // so that your API is remotely testable by FCC 
 
 var cors = require('cors');
-app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
+app.use(cors({
+  optionSuccessStatus: 200
+})); // some legacy browsers choke on 204
 
 
 app.use(express.static('public'));
@@ -23,42 +25,35 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+  res.json({
+    greeting: 'hello API'
+  });
 });
 
 
-const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-  
-  app.get("/:date", (req, res) => {
-    let result = { unix: null, natural: null };
+
+app.get("/:date", (req, res) => {
+  time = parseInt(req.params.date * 1000);
+  if (isNaN(time)) time = req.params.date;
+
+  var result = {
+    "unix": null,
+    "utc": "Invalid Date"
+  }
+  var date = new Date(time);
+  if (!isNaN(date)) {
+    result = {
+      "unx": date.getTime(),
+      "utc": date.toString()
+    }
+  } 
+res.json(result)
+
+})
 
 
-
-
-
-
-
-
-
-
-
-
-
-var Port = process.env.port || 3000;
+// var Port = process.env.PORT || 5000;
 // listen for requests :)
-var listener = app.listen(Port, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+var listener = app.listen(5000, function () {
+  console.log('Your app is listening on port ' + 5000);
 });
