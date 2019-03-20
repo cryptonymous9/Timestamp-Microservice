@@ -51,9 +51,9 @@ res.json(result)
 
 })
 
-
+var port = process.env.PORT || 8080;
 // var Port = process.env.PORT || 5000;
 // listen for requests :)
-var listener = app.listen(5000, function () {
-  console.log('Your app is listening on port ' + 5000);
+var listener = app.listen(port, function () {
+  console.log('Your app is listening on port ' + port);
 });
