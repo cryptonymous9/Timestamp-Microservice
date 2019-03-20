@@ -21,7 +21,7 @@ Example output:
 ```
 { "unix": 1450137600, "natural": "December 15, 2015" }
 
-#Live Demo
+# Live Demo
 
 Hosted at https://timestamp-microservice-fcc9.herokuapp.com/
 
